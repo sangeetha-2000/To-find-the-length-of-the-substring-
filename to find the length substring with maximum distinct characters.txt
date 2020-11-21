@@ -1,0 +1,49 @@
+
+noofchar1 = 256
+def smallestsubstring(str): 
+  
+    n = len(str)     # to find length of given string
+    #to find maximum distinct characters
+    maximumdistinct = distinctchar(str, n) 
+    min = n     # result 
+      
+    
+    for i in range(n): 
+        for j in range(n): 
+            sub = str[i:j] 
+            sublength = len(sub) 
+            subdistinctchar = distinctchar(sub,sublength) 
+              
+            # to check maximum distinct characters is equal to distinct characters in substring and to find its minimum length
+            if (sublength < min and 
+                maximumdistinct == subdistinctchar): 
+                min = sublength 
+  
+    return min
+    noofchar2 = 256
+#to find distict characters in the given string
+def distinctchar(str, n): 
+  
+    
+    count = [0] * noofchar1 
+    #increment count if the characters is found and 'ord'function is used to convert char into int 
+    for i in range(n): 
+        count[ord(str[i])] += 1
+      
+    maximumdistinct = 0
+    for i in range(noofchar1): 
+        if (count[i] != 0): 
+            maximumdistinct += 1    
+      
+    return maximumdistinct 
+  
+
+  
+
+if __name__ == "__main__": 
+      
+    
+    str = input()
+      
+    l = smallestsubstring(str); 
+    print(l) 
